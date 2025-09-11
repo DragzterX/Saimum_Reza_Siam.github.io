@@ -54,9 +54,23 @@
             padding: 2rem 1rem;
             text-align: center;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-content {
+            text-align: left;
         }
         header h1 { margin: 0; font-size: 2.5rem; }
         header p { font-size: 1.2rem; margin-top: .5rem; }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+        }
 
         .header-buttons {
             position: absolute;
@@ -94,6 +108,8 @@
             padding: 1.5rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.2s ease, background 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         .project:hover { transform: translateY(-5px); }
         .project h3 { margin-top: 0; color: var(--link-color); }
@@ -113,8 +129,24 @@
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
             font-size: 0.9rem;
+            cursor: pointer;
         }
         .project-links a:hover { background: var(--project-link-hover-bg); }
+
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            margin-top: 1rem;
+            border-top: 1px solid #ccc;
+            padding-top: 1rem;
+        }
+        .project-details.expanded {
+            max-height: 1000px; /* A large value to allow for expansion */
+        }
+        .project-details img {
+            margin-bottom: 1rem;
+        }
 
         .skills-category {
             margin-bottom: 2rem;
@@ -157,8 +189,11 @@
 
     <!-- Header -->
     <header>
-        <h1>Saimum Reza Siam</h1>
-        <p>Computer Science Graduate | AI & Full-Stack Developer</p>
+        <img src="siam.jpg" alt="A professional headshot of Saimum Reza Siam" class="profile-pic">
+        <div class="header-content">
+            <h1>Saimum Reza Siam</h1>
+            <p>Computer Science Graduate | AI & Full-Stack Developer</p>
+        </div>
         <div class="header-buttons">
             <a href="Saimum_Reza_Siam_Resume.pdf" class="resume-btn" target="_blank">View Resume</a>
             <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
@@ -186,7 +221,21 @@
                 <h3>Hybrid ConvNeXt–ViT for Glioblastoma Detection</h3>
                 <p>Designed a novel hybrid model using 4D fMRI (146 scans) that successfully classified glioblastoma with ~91% accuracy and AUC-ROC 0.9, demonstrating strong analytical and model-building skills in a critical medical application.</p>
                 <div class="project-links">
+                    <a class="expand-btn">More Details</a>
                     <a href="https://github.com/DragzterX/Thesis_Project_Bachelors" target="_blank">View on GitHub</a>
+                </div>
+                <!-- Expanded details section -->
+                <div class="project-details">
+                    <p>
+                        This project was the core of my bachelor's thesis. I explored the challenge of accurately diagnosing glioblastoma from fMRI data, a crucial step in early intervention. The hybrid model was designed to combine the spatial feature extraction capabilities of ConvNeXt with the long-range dependency capture of Vision Transformers. Key features of the implementation include:
+                    </p>
+                    <ul>
+                        <li>Advanced data preprocessing pipeline to handle 4D fMRI data.</li>
+                        <li>Custom PyTorch Lightning module for efficient model training and validation.</li>
+                        <li>Comprehensive evaluation using metrics beyond accuracy, such as AUC-ROC and F1-score, to ensure model robustness.</li>
+                    </ul>
+                    <img src="https://placehold.co/400x250/2980b9/ffffff?text=Model+Architecture" alt="A diagram of the model architecture.">
+                    <img src="https://placehold.co/400x250/2980b9/ffffff?text=Accuracy+Chart" alt="A graph showing model accuracy over epochs.">
                 </div>
             </div>
             <div class="project">
@@ -194,32 +243,40 @@
                 <h3>Unsupervised Clustering of MNIST</h3>
                 <p>Developed a solution combining a Convolutional Autoencoder with K-Means clustering to perform unsupervised digit classification on the MNIST dataset. This project showcases my expertise in feature extraction and unsupervised learning techniques.</p>
                 <div class="project-links">
+                    <a class="expand-btn">More Details</a>
                     <a href="https://github.com/DragzterX/Cse425_project" target="_blank">View on GitHub</a>
                 </div>
+                <!-- You can add a details section here following the pattern above -->
             </div>
             <div class="project">
                 <img src="https://placehold.co/400x250/357abd/ffffff?text=Restaurant+Management+Website" alt="A screenshot of the restaurant management website user interface.">
                 <h3>Restaurant Management Website</h3>
                 <p>Built a full-stack MERN application that implements a QR-based food ordering system. This solution streamlines the ordering process for customers and helps restaurants manage operations more efficiently, directly addressing key industry pain points.</p>
                 <div class="project-links">
+                    <a class="expand-btn">More Details</a>
                     <a href="https://github.com/DragzterX/Restaurant_Management_cse471" target="_blank">View on GitHub</a>
                 </div>
+                 <!-- You can add a details section here following the pattern above -->
             </div>
             <div class="project">
                 <img src="https://placehold.co/400x250/357abd/ffffff?text=Finance+Tracker+Website" alt="A screenshot of the finance tracker website dashboard.">
                 <h3>Finance Tracker Website</h3>
                 <p>A personal finance management application built with the MERN stack. The app empowers users to track expenses, set and monitor financial goals, and generate insights into their spending habits through a clean and intuitive interface.</p>
                 <div class="project-links">
+                    <a class="expand-btn">More Details</a>
                     <a href="https://github.com/DragzterX/Finance_Tracker_CSE470_project" target="_blank">View on GitHub</a>
                 </div>
+                 <!-- You can add a details section here following the pattern above -->
             </div>
             <div class="project">
                 <img src="https://placehold.co/400x250/357abd/ffffff?text=Daily+Task+Scheduler" alt="A screenshot of the daily task scheduler app.">
                 <h3>Daily Task Scheduler (WIP)</h3>
                 <p>A work-in-progress application for scheduling daily tasks. Built using the MERN stack for the backend and Flutter for the mobile front-end, with plans to integrate AI for intelligent task prioritization.</p>
                 <div class="project-links">
+                    <a class="expand-btn">More Details</a>
                     <a href="https://github.com/DragzterX/Daily_Task_Scheduler" target="_blank">View on GitHub</a>
                 </div>
+                 <!-- You can add a details section here following the pattern above -->
             </div>
         </div>
     </section>
@@ -301,6 +358,24 @@
                 btn.textContent = "🌙 Dark Mode";
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const expandBtns = document.querySelectorAll('.expand-btn');
+            expandBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const projectDetails = btn.closest('.project').querySelector('.project-details');
+                    
+                    if (projectDetails) {
+                        projectDetails.classList.toggle('expanded');
+                        if (projectDetails.classList.contains('expanded')) {
+                            btn.textContent = 'Hide Details';
+                        } else {
+                            btn.textContent = 'More Details';
+                        }
+                    }
+                });
+            });
+        });
     </script>
 
 </body>
