@@ -1,228 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saimum Reza Siam | Portfolio</title>
-  <style>
-    :root {
-      --bg-color: #f4f6f9;
-      --text-color: #333;
-      --header-bg: linear-gradient(135deg, #4a90e2, #357abd);
-      --card-bg: #fff;
-      --link-color: #2980b9;
-      --link-hover: #1f6391;
-      --skill-bg: #357abd;
-      --footer-bg: #2c3e50;
-      --footer-text: #eee;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saimum Reza Siam | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+            --header-bg: linear-gradient(135deg, #4a90e2, #357abd);
+            --card-bg: #fff;
+            --link-color: #2980b9;
+            --link-hover: #1f6391;
+            --skill-bg: #357abd;
+            --footer-bg: #2c3e50;
+            --footer-text: #eee;
+            --project-link-bg: #4a90e2;
+            --project-link-hover-bg: #357abd;
+            --button-bg: #fff;
+            --button-text: #4a90e2;
+            --button-hover-bg: #e6eef7;
+        }
 
-    body.dark {
-      --bg-color: #1e1e1e;
-      --text-color: #f4f4f4;
-      --header-bg: linear-gradient(135deg, #222, #111);
-      --card-bg: #2c2c2c;
-      --link-color: #4a90e2;
-      --link-hover: #87ceeb;
-      --skill-bg: #4a90e2;
-      --footer-bg: #111;
-      --footer-text: #aaa;
-    }
+        body.dark {
+            --bg-color: #1e1e1e;
+            --text-color: #f4f4f4;
+            --header-bg: linear-gradient(135deg, #222, #111);
+            --card-bg: #2c2c2c;
+            --link-color: #4a90e2;
+            --link-hover: #87ceeb;
+            --skill-bg: #4a90e2;
+            --footer-bg: #111;
+            --footer-text: #aaa;
+            --project-link-bg: #357abd;
+            --project-link-hover-bg: #2980b9;
+            --button-bg: #2c2c2c;
+            --button-text: #4a90e2;
+            --button-hover-bg: #3a3a3a;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-    }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
 
-    header {
-      background: var(--header-bg);
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-    header h1 { margin: 0; font-size: 2.5rem; }
-    header p { font-size: 1.2rem; margin-top: .5rem; }
+        header {
+            background: var(--header-bg);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-size: 1.2rem; margin-top: .5rem; }
 
-    /* Toggle Button */
-    .toggle-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: 2px solid white;
-      border-radius: 25px;
-      padding: 0.3rem 0.8rem;
-      color: white;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.3s;
-    }
-    .toggle-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
+        .header-buttons {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .toggle-btn, .resume-btn {
+            background: none;
+            border: 2px solid white;
+            border-radius: 25px;
+            padding: 0.3rem 0.8rem;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .toggle-btn:hover, .resume-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
 
-    section { padding: 3rem 1rem; max-width: 900px; margin: auto; }
-    h2 { text-align: center; margin-bottom: 1.5rem; color: var(--text-color); font-size: 2rem; }
+        section { padding: 3rem 1rem; max-width: 900px; margin: auto; }
+        h2 { text-align: center; margin-bottom: 1.5rem; color: var(--text-color); font-size: 2rem; }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .project {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, background 0.3s;
-    }
-    .project:hover { transform: translateY(-5px); }
-    .project h3 { margin-top: 0; color: var(--link-color); }
-    .project a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      text-decoration: none;
-      color: #fff;
-      background: var(--link-color);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-    .project a:hover { background: var(--link-hover); }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .project {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, background 0.3s;
+        }
+        .project:hover { transform: translateY(-5px); }
+        .project h3 { margin-top: 0; color: var(--link-color); }
+        .project img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .project-links a {
+            display: inline-block;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            text-decoration: none;
+            color: #fff;
+            background: var(--project-link-bg);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .project-links a:hover { background: var(--project-link-hover-bg); }
 
-    .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
-    .skill {
-      background: var(--skill-bg);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+        .skills-category h3 {
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        .skill {
+            background: var(--skill-bg);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
 
-    .contact { text-align: center; }
-    .contact a { color: var(--link-color); text-decoration: none; margin: 0 0.5rem; font-size: 1.1rem; }
-    .contact a:hover { text-decoration: underline; }
+        .contact { text-align: center; }
+        .contact a { color: var(--link-color); text-decoration: none; margin: 0 0.5rem; font-size: 1.1rem; }
+        .contact a:hover { text-decoration: underline; }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: var(--footer-bg);
-      color: var(--footer-text);
-      font-size: 0.9rem;
-      transition: background 0.3s, color 0.3s;
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            font-size: 0.9rem;
+            transition: background 0.3s, color 0.3s;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Saimum Reza Siam</h1>
-    <p>Computer Science Graduate | AI & Full-Stack Developer</p>
-    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-  </header>
+    <!-- Header -->
+    <header>
+        <h1>Saimum Reza Siam</h1>
+        <p>Computer Science Graduate | AI & Full-Stack Developer</p>
+        <div class="header-buttons">
+            <a href="Saimum_Reza_Siam_Resume.pdf" class="resume-btn" target="_blank">View Resume</a>
+            <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        </div>
+    </header>
 
-  <!-- About -->
-  <section>
-    <h2>About Me</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      Computer Science graduate with experience in Python, PyTorch, and deep learning,
-      including thesis work on ConvNeXt–Vision Transformer hybrid models for medical imaging.
-      Skilled in data preprocessing, model evaluation, and deploying ML pipelines, with a strong
-      foundation in DSA and collaborative software development.
-    </p>
-  </section>
+    <!-- About -->
+    <section>
+        <h2>About Me</h2>
+        <p style="text-align:center; max-width:700px; margin:auto;">
+            I am a dedicated developer with a strong foundation in both machine learning and full-stack web development. My experience allows me to approach complex problems from a unique perspective, combining the power of data-driven insights with robust, user-friendly digital experiences.
+            <br><br>
+            In my recent work, I developed a hybrid ConvNeXt–ViT model to classify glioblastoma, achieving an impressive ~91% accuracy, a project that highlights my ability to translate theoretical knowledge into tangible results. I am also the architect behind several full-stack applications, including a MERN-based finance tracker that provides intuitive dashboards for users to manage their personal finances.
+            <br><br>
+            I am driven by a passion for creating impactful solutions and am committed to continuous learning to stay at the forefront of emerging technologies. My goal is to build products that not only function flawlessly but also genuinely improve people's lives. I am actively seeking opportunities where I can apply my diverse skill set to contribute to a forward-thinking team.
+        </p>
+    </section>
 
-  <!-- Projects -->
-  <section>
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <h3>Hybrid ConvNeXt–ViT for Schizophrenia Detection</h3>
-        <p>Used 4D fMRI (146 scans) to design a novel hybrid model, achieving ~91% accuracy with AUC-ROC 0.9.</p>
-        <a href="https://github.com/DragzterX/Thesis_Project_Bachelors" target="_blank">View Project</a>
-      </div>
-      <div class="project">
-        <h3>Unsupervised Clustering of MNIST</h3>
-        <p>Convolutional Autoencoder + K-Means for unsupervised digit clustering.</p>
-        <a href="https://github.com/DragzterX/Cse425_project" target="_blank">View Project</a>
-      </div>
-      <div class="project">
-        <h3>Restaurant Management Website</h3>
-        <p>MERN stack app for QR-based food ordering system, reducing waiting time and improving service.</p>
-        <a href="https://github.com/DragzterX/Restaurant_Management_cse471" target="_blank">View Project</a>
-      </div>
-      <div class="project">
-        <h3>Finance Tracker Website</h3>
-        <p>MERN-based app to track expenses, set goals, and manage personal finances.</p>
-        <a href="https://github.com/DragzterX/Finance_Tracker_CSE470_project" target="_blank">View Project</a>
-      </div>
-      <div class="project">
-        <h3>Daily Task Scheduler (WIP)</h3>
-        <p>App for scheduling daily life tasks with optional AI integration. Built using MERN + Flutter.</p>
-        <a href="https://github.com/DragzterX/Daily_Task_Scheduler" target="_blank">View Project</a>
-      </div>
-    </div>
-  </section>
+    <!-- Projects -->
+    <section>
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <img src="https://placehold.co/400x250/357abd/ffffff?text=ConvNeXt-ViT+Project" alt="A screenshot or visual representation of the ConvNeXt-ViT project.">
+                <h3>Hybrid ConvNeXt–ViT for Glioblastoma Detection</h3>
+                <p>Designed a novel hybrid model using 4D fMRI (146 scans) that successfully classified glioblastoma with ~91% accuracy and AUC-ROC 0.9, demonstrating strong analytical and model-building skills in a critical medical application.</p>
+                <div class="project-links">
+                    <a href="https://github.com/DragzterX/Thesis_Project_Bachelors" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://placehold.co/400x250/357abd/ffffff?text=Unsupervised+Clustering" alt="A screenshot or visual representation of the Unsupervised Clustering project.">
+                <h3>Unsupervised Clustering of MNIST</h3>
+                <p>Developed a solution combining a Convolutional Autoencoder with K-Means clustering to perform unsupervised digit classification on the MNIST dataset. This project showcases my expertise in feature extraction and unsupervised learning techniques.</p>
+                <div class="project-links">
+                    <a href="https://github.com/DragzterX/Cse425_project" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://placehold.co/400x250/357abd/ffffff?text=Restaurant+Management+Website" alt="A screenshot of the restaurant management website user interface.">
+                <h3>Restaurant Management Website</h3>
+                <p>Built a full-stack MERN application that implements a QR-based food ordering system. This solution streamlines the ordering process for customers and helps restaurants manage operations more efficiently, directly addressing key industry pain points.</p>
+                <div class="project-links">
+                    <a href="https://github.com/DragzterX/Restaurant_Management_cse471" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://placehold.co/400x250/357abd/ffffff?text=Finance+Tracker+Website" alt="A screenshot of the finance tracker website dashboard.">
+                <h3>Finance Tracker Website</h3>
+                <p>A personal finance management application built with the MERN stack. The app empowers users to track expenses, set and monitor financial goals, and generate insights into their spending habits through a clean and intuitive interface.</p>
+                <div class="project-links">
+                    <a href="https://github.com/DragzterX/Finance_Tracker_CSE470_project" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="https://placehold.co/400x250/357abd/ffffff?text=Daily+Task+Scheduler" alt="A screenshot of the daily task scheduler app.">
+                <h3>Daily Task Scheduler (WIP)</h3>
+                <p>A work-in-progress application for scheduling daily tasks. Built using the MERN stack for the backend and Flutter for the mobile front-end, with plans to integrate AI for intelligent task prioritization.</p>
+                <div class="project-links">
+                    <a href="https://github.com/DragzterX/Daily_Task_Scheduler" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Skills -->
-  <section>
-    <h2>Skills</h2>
-    <div class="skills">
-      <span class="skill">Python</span>
-      <span class="skill">PyTorch</span>
-      <span class="skill">Scikit-learn</span>
-      <span class="skill">Deep Learning</span>
-      <span class="skill">Computer Vision</span>
-      <span class="skill">Pandas</span>
-      <span class="skill">NumPy</span>
-      <span class="skill">SQL/MySQL</span>
-      <span class="skill">MongoDB</span>
-      <span class="skill">MERN Stack</span>
-      <span class="skill">AWS</span>
-      <span class="skill">Git</span>
-      <span class="skill">Agile/Scrum</span>
-    </div>
-  </section>
+    <!-- Skills -->
+    <section>
+        <h2>Skills</h2>
+        <div class="skills-category">
+            <h3>Programming Languages</h3>
+            <div class="skills-list">
+                <span class="skill">Python</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">TypeScript</span>
+                <span class="skill">SQL/MySQL</span>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3>AI/ML</h3>
+            <div class="skills-list">
+                <span class="skill">PyTorch</span>
+                <span class="skill">Scikit-learn</span>
+                <span class="skill">Deep Learning</span>
+                <span class="skill">Computer Vision</span>
+                <span class="skill">Natural Language Processing</span>
+                <span class="skill">Pandas</span>
+                <span class="skill">NumPy</span>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3>Web Development</h3>
+            <div class="skills-list">
+                <span class="skill">MERN Stack</span>
+                <span class="skill">MongoDB</span>
+                <span class="skill">Express.js</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3>Tools & Platforms</h3>
+            <div class="skills-list">
+                <span class="skill">AWS</span>
+                <span class="skill">Git</span>
+                <span class="skill">Agile/Scrum</span>
+                <span class="skill">VS Code</span>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact -->
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:siamsaimum@gmail.com">siamsaimum@gmail.com</a> | Phone: <a href="tel:+8801706314319">+880-1706314319</a></p>
-    <p>
-      <a href="https://linkedin.com/in/saimum-reza-siam-a77760229" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/DragzterX" target="_blank">GitHub</a> |
-      <a href="Saimum_Reza_Siam_Resume.pdf" target="_blank">Resume</a>
-    </p>
-  </section>
+    <!-- Contact -->
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:siamsaimum@gmail.com">siamsaimum@gmail.com</a> | Phone: <a href="tel:+8801706314319">+880-1706314319</a></p>
+        <p>
+            <a href="https://linkedin.com/in/saimum-reza-siam-a77760229" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/DragzterX" target="_blank">GitHub</a> |
+            <a href="Saimum_Reza_Siam_Resume.pdf" target="_blank">Resume</a>
+        </p>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Saimum Reza Siam | Built with ❤️ using GitHub Pages
-  </footer>
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Saimum Reza Siam | Built with ❤️ using GitHub Pages
+    </footer>
 
-  <script>
-    // Detect system theme on load
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.classList.add("dark");
-      document.querySelector(".toggle-btn").textContent = "☀️ Light Mode";
-    }
+    <script>
+        // Detect system theme on load
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add("dark");
+            document.querySelector(".toggle-btn").textContent = "☀️ Light Mode";
+        }
 
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-      const btn = document.querySelector(".toggle-btn");
-      if (document.body.classList.contains("dark")) {
-        btn.textContent = "☀️ Light Mode";
-      } else {
-        btn.textContent = "🌙 Dark Mode";
-      }
-    }
-  </script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+            const btn = document.querySelector(".toggle-btn");
+            if (document.body.classList.contains("dark")) {
+                btn.textContent = "☀️ Light Mode";
+            } else {
+                btn.textContent = "🌙 Dark Mode";
+            }
+        }
+    </script>
 
 </body>
 </html>
